@@ -1,7 +1,10 @@
+import sys
 import time
-import matplotlib.pyplot as plt 
-from ..util.random_size import random_func
-from ..util.graph_fit import graph_fit
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from util.random_size import random_func
+from util.graph_fit import graph_fit
+from util.graph import graph
 
 
 def threesum_pointer(lst, sum=0):
@@ -24,26 +27,6 @@ def threesum_pointer(lst, sum=0):
     return list(unique_sum)
 
 
-def graph(lst):
-    # Graf 1: Alla tre körningar
-    for j in range(3):
-        x = []
-        y = []
-
-        for run, size, mes_time in lst:
-            if run == j:
-                x.append(size)
-                y.append(mes_time)
-
-        plt.plot(x, y, marker="*", linestyle="-", label=f"Körning {j+1}")
-
-    plt.xlabel("Listans storlek")
-    plt.ylabel("Exekveringstid (sekunder)")
-    plt.title("Alla körningar")
-    plt.legend()
-    plt.grid()
-
-
 def main():
     size = range(100, 850, 50)
     print("code is running...")
@@ -55,8 +38,8 @@ def main():
             threesum_pointer(lst)
             mes_time = time.time() - before
             result.append((j, i, mes_time,))
-    graph(result)
-    graph_fit(result, size)
+    graph("Pointer", result)
+    graph_fit("Pointer", result, size)
 
 
 main()

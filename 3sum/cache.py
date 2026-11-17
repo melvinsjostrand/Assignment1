@@ -1,7 +1,11 @@
+import sys
 import time
-from ..util.random_size import random_func
-from ..util.graph_fit import graph_fit
-from ..util.graph import graph
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from util.random_size import random_func
+from util.graph_fit import graph_fit
+from util.graph import graph
+
 
 
 def threesum_cache(lst, sum=0):
@@ -35,8 +39,8 @@ def main():
             mes_time = time.time() - before
             print(mes_time)
             result.append((j, i, mes_time,))
-    graph(result)
-    graph_fit(result, size)
+    graph("Cache", result)
+    graph_fit("Cache", result, size)
 
 
 main()

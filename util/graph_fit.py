@@ -4,7 +4,7 @@ from util.lin_reg import lin_reg
 import matplotlib.pyplot as plt 
 
 
-def graph_fit(lst, size):
+def graph_fit(name, lst, size):
     avg_lst = average(lst, size)
     
     sizes = []
@@ -26,7 +26,7 @@ def graph_fit(lst, size):
     for x in log_x:
         line_y.append(m + k * x)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-
+    fig.suptitle(name)
     ax1.plot(sizes, times, marker="*", linestyle="None")
     ax1.set_xlabel("Listans storlek")
     ax1.set_ylabel("Genomsnittlig tid (sekunder)")
