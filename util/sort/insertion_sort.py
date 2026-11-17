@@ -1,8 +1,8 @@
 def insertion_sort(lst):
     sorted_lst = lst.copy()
 
-    if sorted_lst <= 1:
-        return
+    if len(sorted_lst) <= 1:
+        return sorted_lst
     for i in range(1, len(sorted_lst)):
         item = sorted_lst[i]
         j = i - 1

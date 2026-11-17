@@ -23,19 +23,21 @@ def main():
         ("selection sort", selection_sort),
     ]
     results = []
+    avg_sort = []
     size = range(1000, 15000, 1000)
-    for i in size:
-        lst = random_func(i, 10)
-        for name, sort_function in sorters:
+    for name, sort_function in sorters:
+        for i in size:
+            print(i)
+            lst = random_func(i, 10)
             data = lst.copy()
             before = time.time()
             sort_function(data)
             mes_time = time.time() - before
             
             results.append((name, i, mes_time))
-
-    sort_graph("sort", results)
-    graph_fit("sort", results, size)
+        
+    print(results)
+    #sort_graph("sort", results)
 
 
 main()
