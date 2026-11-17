@@ -1,18 +1,14 @@
 def insertion_sort(lst):
-    n = len(lst)
-    if n <= 1:
+    sorted_lst = lst.copy()
+
+    if sorted_lst <= 1:
         return
-    for i in range(1, n):
-        item = lst[i]
+    for i in range(1, len(sorted_lst)):
+        item = sorted_lst[i]
         j = i - 1
-        print(lst)
-        while j >= 0 and item < lst[j]:
-            lst[j+1] = lst[j]
+        while j >= 0 and item < sorted_lst[j]:
+            sorted_lst[j+1] = sorted_lst[j]
             j -= 1
             
-        lst[j+1] = item
-
-
-arr = [12, 11, 13, 5, -1]
-insertion_sort(arr)
-print(arr)
+        sorted_lst[j+1] = item
+    return sorted_lst

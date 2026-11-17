@@ -30,7 +30,7 @@ def graph_fit(name, lst, size):
     ax1.plot(sizes, times, marker="*", linestyle="None")
     ax1.set_xlabel("Listans storlek")
     ax1.set_ylabel("Genomsnittlig tid (sekunder)")
-    ax1.set_title("Genomsnitt av 3 körningar")
+    ax1.set_title("Genomsnitt")
     ax1.grid()
 
     ax2.plot(log_x, log_y, marker="*", linestyle="None", label="Mätpunkter")

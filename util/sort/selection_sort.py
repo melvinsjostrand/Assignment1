@@ -1,7 +1,7 @@
 import time
 from util.random_size import random_func
-from util.graph import graph
-from util.graph_fit import graph_fit
+from util.graphs.graph import graph
+from util.graphs.graph_fit import graph_fit
 
 
 def selection_sort(lst):
@@ -13,21 +13,3 @@ def selection_sort(lst):
                 min_index = j
         new_lst[i], new_lst[min_index] = new_lst[min_index], new_lst[i]
     return new_lst
-
-
-def main():
-    result = []
-    size = range(100, 850, 50)
-    for j in range(3):
-        for i in (size):
-            lst = random_func(i, 10)
-            before = time.time()
-            selection_sort(lst)
-            mes_time = time.time() - before
-            result.append((j, i, mes_time,))
-
-    graph(result)
-    graph_fit(result, size)
-
-
-main()

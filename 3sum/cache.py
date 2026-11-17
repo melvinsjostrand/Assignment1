@@ -1,11 +1,13 @@
 import sys
 import time
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from util.random_size import random_func
-from util.graph_fit import graph_fit
-from util.graph import graph
 
+sys.path.append(".")
+sys.path.append("util/")
+sys.path.append("util/graphs/")
+
+from random_size import random_func  # noqa: E402
+from graph_fit import graph_fit  # noqa: E402
+from graph import graph  # noqa: E402
 
 
 def threesum_cache(lst, sum=0):

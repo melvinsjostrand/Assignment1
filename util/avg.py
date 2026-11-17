@@ -13,5 +13,6 @@ def average(lst, run):
         print(count)
         avg = total / count
         avg_res.append((size, avg))
+        print(avg_res)
     return avg_res
         

@@ -8,7 +8,7 @@ def bucket_sort(lst):
     min_value, max_value = min(lst), max(lst)
     denominator = (max_value - min_value + 1) / num_buckets
     for value in lst:
-        index = int((value - min_value) / denominator * num_buckets)
+        index = min(int((value - min_value) / denominator), num_buckets - 1)
         buckets[index].append(value)
 
     # 3 sort each bucket

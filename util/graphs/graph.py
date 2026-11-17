@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 
 
 def graph(name, lst):
+    print(lst)
     # Graf 1: Alla tre körningar
     for j in range(3):
         x = []
@@ -18,3 +19,4 @@ def graph(name, lst):
     plt.ylabel("Exekveringstid (sekunder)")
     plt.legend()
     plt.grid()
+    plt.show()
