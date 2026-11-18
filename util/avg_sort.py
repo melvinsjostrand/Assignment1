@@ -1,17 +1,20 @@
 def average(lst, run):
     avg_res = []
-    print(lst)
-    for size in (run):
-        total = 0
-        count = 0
+    runs = {}
 
-        for run, s, time in lst:
-            if s == size:
-                total += time
-                count += 1
-        print(total)
-        print(count)
-        avg = total / count
-        avg_res.append((size, avg))
-        print(avg_res)
+    for alg, size, mes_time in lst:
+        if alg not in runs:
+            runs[alg] = {}
+        if size not in runs[alg]:
+            runs[alg][size] = []
+
+        runs[alg][size].append(mes_time)
+
+    for alg, sizes in runs.items():
+        for size in run:
+            times = sizes.get(size, [])
+            if times:
+                avg = sum(times) / len(times)
+                avg_res.append((alg, size, avg))
+
     return avg_res
