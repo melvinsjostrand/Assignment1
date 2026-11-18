@@ -27,22 +27,3 @@ def threesum_cache(lst, sum=0):
                 cache.add(n2)
 
     return list(unique_sum)
-
-
-def main():
-    size = range(1000, 2000, 200)
-    print("code is running...")
-    result = []
-    for j in range(3):
-        for i in (size):
-            lst = random_func(i, 10)
-            before = time.time()
-            threesum_cache(lst)
-            mes_time = time.time() - before
-            print(mes_time)
-            result.append((j, i, mes_time,))
-    graph("Cache", result)
-    graph_fit("Cache", result, size)
-
-
-main()

@@ -23,21 +23,3 @@ def threesum_brute(lst, sum=0):
                     p = tuple(sorted((n1, n2, n3)))
                     unique_sum.add(p)
     return list(unique_sum)
-
-
-def main():
-    size = range(100, 600, 50)
-    print("code is running...")
-    result = []
-    for j in range(3):
-        for i in (size):
-            lst = random_func(i, 10)
-            before = time.time()
-            threesum_brute(lst)
-            mes_time = time.time() - before
-            result.append((j, i, mes_time,))
-    graph("Brute", result)
-    graph_fit("Brute", result, size)
-
-
-main()

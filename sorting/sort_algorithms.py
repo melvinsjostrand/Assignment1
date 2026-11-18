@@ -12,9 +12,9 @@ from insertion_sort import insertion_sort  # noqa: E402
 from radix_sort import radix  # noqa: E402
 from selection_sort import selection_sort  # noqa: E402
 from sort_graph import sort_graph  # noqa: E402
-from graph_avg_sort import graph_fit  # noqa: E402
-from util.avg_sort import average
-
+# from graph_avg_sort import graph_fit  # noqa: E402
+from util.avg_sort import average  # noqa: E402
+ 
 
 def main():
     sorters = [
@@ -24,9 +24,8 @@ def main():
         ("selection sort", selection_sort),
     ]
     results = []
-    avg_sort = []
     repeat = 3
-    size = range(1000, 3000, 1000)
+    size = range(1000, 2000, 100)
     for name, sort_function in sorters:
         for j in range(repeat):
             for i in size:
@@ -40,6 +39,7 @@ def main():
     avg = average(results, size)
     print(avg)
     sort_graph("Sorteringsalgoritmer – medelvärden", avg)
+    sort_graph("sorteringsalgoritmer", results)
 
 
 main()

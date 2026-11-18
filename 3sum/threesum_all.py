@@ -1,12 +1,13 @@
 from brute import threesum_brute
 from pointer import threesum_pointer
 from cache import threesum_cache
+from test_3sum import test
 import sys
 
 sys.path.append(".")
 sys.path.append("util/")
 sys.path.append("util/graphs/")
-from random_size import random_func
+from random_size import random_func  # noqa: E402
 
 
 def main():
@@ -18,3 +19,4 @@ def main():
             threesum_brute(lst)
             threesum_pointer(lst)
             threesum_cache(lst)
+    test()
