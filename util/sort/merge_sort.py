@@ -1,5 +1,4 @@
 def merge_sort_slow(lst):
-    print("running")
     if len(lst) > 1:
         first, last = 0, len(lst)
         mid = (first + last) // 2

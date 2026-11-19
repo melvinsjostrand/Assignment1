@@ -2,19 +2,26 @@ import matplotlib.pyplot as plt
 
 
 def graph(name, lst):
-    print(lst)
-    # Graf 1: Alla tre körningar
-    for j in range(3):
-        x = []
-        y = []
+    runs = {}
 
-        for run, size, mes_time in lst:
-            if run == j:
-                x.append(size)
-                y.append(mes_time)
+    for algorithm, size, mes_time in lst:
+        if algorithm not in runs:
+            runs[algorithm] = []
 
-        plt.plot(x, y, marker="*", linestyle="-", label=f"Körning {j+1}")
-    plt.title(f"{name} – alla körningar")
+        runs[algorithm].append((size, mes_time))
+    print(runs)
+    for algorithm, results in runs.items():
+        results.sort()
+
+        sizes = []
+        times = []
+
+        for size, mes_time in results:
+            sizes.append(size)
+            times.append(mes_time)
+        plt.plot(sizes, times, marker="*", linestyle="None", label=algorithm)
+
+    plt.title(f"{name} alla körningar")
     plt.xlabel("Listans storlek")
     plt.ylabel("Exekveringstid (sekunder)")
     plt.legend()

@@ -1,15 +1,3 @@
-import sys
-import time
-
-sys.path.append(".")
-sys.path.append("util/")
-sys.path.append("util/graphs/")
-
-from random_size import random_func  # noqa: E402
-from graph_fit import graph_fit  # noqa: E402
-from graph import graph  # noqa: E402
-
-
 def threesum_cache(lst, sum=0):
     unique_sum = set()
     lst = sorted(lst)
@@ -27,3 +15,4 @@ def threesum_cache(lst, sum=0):
                 cache.add(n2)
 
     return list(unique_sum)
+

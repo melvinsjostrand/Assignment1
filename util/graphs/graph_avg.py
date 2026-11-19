@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 def graph_fit(name, lst, size):
     avg_lst = average(lst, size)
     runs = {}
-
     for algorithm, s, t in avg_lst:
         if algorithm not in runs:
             runs[algorithm] = []
@@ -18,16 +17,26 @@ def graph_fit(name, lst, size):
 
     for algorithm, results in runs.items():
         results.sort()
-        sizes = [s for s, _ in results]
-        times = [t for _, t in results]
-
+        sizes = []
+        for s, _ in results:
+            sizes.append(s)
+        times = []
+        for _, t in results:
+            times.append(t)
+            
         ax1.plot(sizes, times, marker="*", linestyle="-", label=algorithm)
 
         log_x = [math.log(s) for s in sizes]
         log_y = [math.log(t) for t in times]
         m, k = lin_reg(log_x, log_y)
         line_y = [m + k * x for x in log_x]
-        ax2.plot(log_x, log_y, marker="*", linestyle="None", label=algorithm)
+        ax2.plot(
+            log_x,
+            log_y,
+            marker="*",
+            linestyle="None",
+            label=f"{algorithm} (k={k:.3f})",
+        )
         ax2.plot(log_x, line_y, color="red")
 
     ax1.set_xlabel("Listans storlek")

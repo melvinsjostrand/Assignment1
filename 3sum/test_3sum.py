@@ -5,11 +5,11 @@ from pointer import threesum_pointer
 
 
 def test():
-    randoms = []
-
+    n = 15
     for run in range(1, 4):
-        for i in range(4):
-            r = random.randint(-15, 15)
+        randoms = []
+        for i in range(n):
+            r = random.randint(-10 * n, 10 * n)
             randoms.append(r)
         brute = threesum_brute(randoms)
         cache = threesum_cache(randoms)
@@ -20,12 +20,12 @@ def test():
         print(cache, "CACHE 3 SUM")
         print(pointer, "POINTER 3 SUM")
 
-    assert set(brute) == set(cache) == set(pointer)
+        assert set(brute) == set(cache) == set(pointer)
 
-    print("All tests passed!")
-    print(f"Brute: {len(brute)} triplets")
-    print(f"Cache: {len(cache)} triplets")
-    print(f"Pointer: {len(pointer)} triplets")
+        print("All tests passed!")
+        print(f"Brute: {len(brute)} triplets")
+        print(f"Cache: {len(cache)} triplets")
+        print(f"Pointer: {len(pointer)} triplets")
 
 
 def main():

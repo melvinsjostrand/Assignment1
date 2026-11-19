@@ -1,4 +1,4 @@
-def radix(lst):
+def radix_sort(lst):
     if not lst:
         return lst
     neg = [-x for x in lst if x < 0]

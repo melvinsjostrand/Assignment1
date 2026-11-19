@@ -7,14 +7,11 @@ def average(lst, run):
             runs[alg] = {}
         if size not in runs[alg]:
             runs[alg][size] = []
-
         runs[alg][size].append(mes_time)
 
     for alg, sizes in runs.items():
-        for size in run:
-            times = sizes.get(size, [])
-            if times:
-                avg = sum(times) / len(times)
-                avg_res.append((alg, size, avg))
+        for size, times in sizes.items():
+            avg = sum(times) / len(times)
+            avg_res.append((alg, size, avg))
 
     return avg_res
