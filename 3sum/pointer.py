@@ -10,11 +10,9 @@ def threesum_pointer(lst, sum=0):
             if p == sum:
                 unique_sum.add((n1, new_lst[fp], new_lst[lp]))
                 fp += 1
-                lp -= 1
             elif p < sum:
                 fp += 1
             else:
                 lp -= 1
 
     return list(unique_sum)
-

@@ -17,23 +17,22 @@ def main():
     threesum = [
         ("Brute", threesum_brute),
         ("Pointer", threesum_pointer),
-        ("Cache", threesum_cache)
-
+        ("Cache", threesum_cache),
     ]
-    repeat = 3
+    repeat = 5
     results = []
-    size = range(500, 8000, 500)
-    brute_size = range(100, 850, 50)
+    size = range(2500, 10000, 500)
+    brute_size = range(100, 900, 50)
     for name, threesums in threesum:
         sizes = brute_size if name == "Brute" else size
-        for i in range(repeat):
+        for run in range(1, repeat + 1):
             for j in sizes:
-                lst = random_func(j, 10)
+                lst = random_func(j)
                 data = lst.copy()
                 before = time.time()
                 threesums(data)
-                mes_time = time.time() - before
-                results.append((name, j, mes_time))
+                measure_time = time.time() - before
+                results.append((name, j, measure_time, run))
     graph("Three sum", results)
     graph_fit("three sum", results, size)
 

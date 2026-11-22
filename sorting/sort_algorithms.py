@@ -16,6 +16,7 @@ from quick_sort import quick_sort_slow  # noqa: E402
 from merge_sort import merge_sort_slow  # noqa: E402
 from graph_avg import graph_fit  # noqa: E402
 from graph import graph  # noqa: E402
+from quick_sort_improved import quick_sort_improved  # noqa : E402
  
 
 def main():
@@ -27,20 +28,21 @@ def main():
         ("insertion sort", insertion_sort),
         ("radix sort", radix_sort),
         ("selection sort", selection_sort),
+        ("quick_sort_improved", quick_sort_improved)
     ]
     results = []
-    repeat = 3
+    repeat = 5
     size = range(500, 9000, 500)
     for name, sort_function in sorters:
-        for j in range(repeat):
+        for run in range(1, repeat + 1):
             for i in size:
                 # print(i)
-                lst = random_func(i, 10)
+                lst = random_func(i)
                 data = lst.copy()
                 before = time.time()
                 sort_function(data)
                 mes_time = time.time() - before
-                results.append((name, i, mes_time))
+                results.append((name, i, mes_time, run))
     graph("Sorteringsalgoritmer", results)
     graph_fit("sorteringsalgoritmer", results, size)
 

@@ -2,7 +2,8 @@ def average(lst, run):
     avg_res = []
     runs = {}
 
-    for alg, size, mes_time in lst:
+    for result in lst:
+        alg, size, mes_time = result[:3]
         if alg not in runs:
             runs[alg] = {}
         if size not in runs[alg]:

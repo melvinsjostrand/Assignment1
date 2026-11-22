@@ -1,10 +1,10 @@
 import random
 
 
-def random_func(size, width):
+def random_func(size):
     lst = []
-    n = size * width
+    n = size
     for i in range(size):
-        r = random.randint(-1 * n, 1 * n)
+        r = random.randint(-10 * n, 10 * n)
         lst.append(r)
     return lst

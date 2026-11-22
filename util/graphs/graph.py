@@ -4,13 +4,20 @@ import matplotlib.pyplot as plt
 def graph(name, lst):
     runs = {}
 
-    for algorithm, size, mes_time in lst:
-        if algorithm not in runs:
-            runs[algorithm] = []
+    for result in lst:
+        if len(result) == 4:
+            algorithm, size, mes_time, run = result
+            key = (algorithm, run)
+        else:
+            algorithm, size, mes_time = result
+            key = (algorithm, None)
 
-        runs[algorithm].append((size, mes_time))
-    print(runs)
-    for algorithm, results in runs.items():
+        if key not in runs:
+            runs[key] = []
+
+        runs[key].append((size, mes_time))
+
+    for (algorithm, run), results in runs.items():
         results.sort()
 
         sizes = []
@@ -19,7 +26,8 @@ def graph(name, lst):
         for size, mes_time in results:
             sizes.append(size)
             times.append(mes_time)
-        plt.plot(sizes, times, marker="*", linestyle="None", label=algorithm)
+        label = algorithm if run is None else f"{algorithm} - körning {run}"
+        plt.plot(sizes, times, marker="*", linestyle="None", label=label)
 
     plt.title(f"{name} alla körningar")
     plt.xlabel("Listans storlek")
