@@ -4,6 +4,8 @@ from cache import threesum_cache
 from test_3sum import test
 import sys
 import time
+
+# Lägger till sökvägar så att Python hittar modulerna
 sys.path.append(".")
 sys.path.append("util/")
 sys.path.append("util/graphs/")
@@ -13,7 +15,10 @@ from graph_avg import graph_fit  # noqa: E402
 
 
 def main():
+    # Kör testerna för att kontrollera att algoritmerna fungerar
     test()
+
+    # Samlar algoritmerna i en lista för att kunna köra dem på samma sätt    
     threesum = [
         ("Brute", threesum_brute),
         ("Pointer", threesum_pointer),
@@ -24,6 +29,7 @@ def main():
     size = range(2500, 10000, 500)
     brute_size = range(100, 900, 50)
     for name, threesums in threesum:
+        # Väljer liststorlekar beroende på vilken algoritm som körs 
         sizes = brute_size if name == "Brute" else size
         for run in range(1, repeat + 1):
             for j in sizes:

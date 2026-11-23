@@ -5,16 +5,22 @@ import matplotlib.pyplot as plt
 
 
 def graph_fit(name, lst, size):
+
+    # Räknar ut genomsnittlig exekveringstid för varje liststorlek
     avg_lst = average(lst, size)
     runs = {}
+
+    # Grupperar medelvärdena efter algoritm
     for algorithm, s, t in avg_lst:
         if algorithm not in runs:
             runs[algorithm] = []
         runs[algorithm].append((s, t))
 
+    # Skapar två diagram bredvid varandra
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
     fig.suptitle(name)
 
+    # Går igenom varje algoritm
     for algorithm, results in runs.items():
         results.sort()
         sizes = []
@@ -28,7 +34,11 @@ def graph_fit(name, lst, size):
 
         log_x = [math.log(s) for s in sizes]
         log_y = [math.log(t) for t in times]
+
+        # Beräknar en linjär regression på de logaritmerade värdena
         m, k = lin_reg(log_x, log_y)
+
+        # Räknar ut trendlinjens y-värden
         line_y = [m + k * x for x in log_x]
         ax2.plot(
             log_x,
